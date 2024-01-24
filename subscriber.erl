@@ -1,10 +1,14 @@
 -module(subscriber).
--export([create/3, listen/1]).
+-export([create/2, start/1]).
 
-create(Ip, Port, Topic) ->
+
+create(Ip, Port) ->
+
+	application:start(chumak),
+
 	{ok, SocketPid} = chumak:socket(sub),
 
-	ok = chumak:subscribe(SocketPid, Topic),
+	ok = chumak:subscribe(SocketPid, ""),
 
 	case chumak:connect(SocketPid, tcp, Ip, Port) of
 		{error, Reason} ->
@@ -20,3 +24,7 @@ listen(SocketConnectPid) ->
 	{ok, Message} = chumak:recv(SocketConnectPid),
 	io:format("Message: ~s\n", [binary_to_list(Message)]),
 listen(SocketConnectPid).
+
+
+start(SocketConnectPid) ->
+	listen(SocketConnectPid).
