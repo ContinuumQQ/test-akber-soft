@@ -1,14 +1,6 @@
 # test-akber-soft
 Test for Akeber-Soft
 
-# build: 
-make Compile
-
-# run:
-cd ./BUILD \
-chmod +x run.sh \
-./run.sh
-
 # example:
  ## Publisher:
  `rebar3 shell` \
