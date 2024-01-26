@@ -10,7 +10,7 @@ create(Ip, Port) ->
 
 	ok = chumak:subscribe(SocketPid, ""),
 
-	case chumak:connect(SocketPid, tcp, Ip, Port) of
+	case chumak:bind(SocketPid, tcp, Ip, Port) of
 		{error, Reason} ->
                          io:format("Connection error:~s\n", [Reason]),
                          {error, Reason};
