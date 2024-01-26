@@ -8,7 +8,7 @@ create(Ip, Port) ->
 
 	{ok, SocketPid} = chumak:socket(pub),
 	
-	case chumak:connect(SocketPid, tcp, Ip, Port) of 
+	case chumak:bind(SocketPid, tcp, Ip, Port) of 
 		{error, Reason} -> 
 			io:format("Connection error:~s\n", [Reason]),
 			{error, Reason};
