@@ -11,11 +11,14 @@ chmod +x run.sh \
 
 # example:
  ## Publisher:
-`{ok, Socket} = publisher:create("localhost", 5555),` \
-`publisher:send(Socket, "Topic" ,"Hello, Server").`
+ `rebar3 shell` \
+ `c("publisher"),` \
+ `{ok, Socket} = publisher:create("localhost", 5555),` \
+ `publisher:send(Socket, "Test").`
 
 ## Subsriber:
-  `{ok, Socket} = subscriber("localhost", 5555, "Topic"),` \
-  `subscriber:listen(Socket).`
+  `rebar3 shell` \
+  `{ok, Socket} = subscriber:create("localhost", 5555),` \
+  `subscriber:start(Socket).`
 
   
